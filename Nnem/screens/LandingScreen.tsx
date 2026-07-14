@@ -1,12 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 
 export default function LandingScreen({ navigation }: any) {
   return (
     <View style={styles.container}>
-      <StatusBar style="light" />
-      
-      {/* Logo / Brand */}
+
+      {/* Top left logo */}
+      <Image
+        source={require('../assets/icon.png')}
+        style={styles.logoTopLeft}
+      />
+
+      {/* Bottom right logo */}
+      <Image
+        source={require('../assets/icon.png')}
+        style={styles.logoBottomRight}
+      />
+
+      {/* Brand */}
       <View style={styles.brandContainer}>
         <Text style={styles.logo}>nnem</Text>
         <Text style={styles.tagline}>care that knows you</Text>
@@ -14,16 +24,17 @@ export default function LandingScreen({ navigation }: any) {
 
       {/* CTA */}
       <View style={styles.buttonContainer}>
-        <TouchableOpacity 
-            style={styles.primaryButton}
-            onPress={() => navigation.navigate('QuizIntro')}
-            >
-            <Text style={styles.primaryButtonText}>Begin Your Profile</Text>
+        <TouchableOpacity
+          style={styles.primaryButton}
+          onPress={() => navigation.navigate('QuizIntro')}
+        >
+          <Text style={styles.primaryButtonText}>Begin Your Profile</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.secondaryButton}>
           <Text style={styles.secondaryButtonText}>I already have an account</Text>
         </TouchableOpacity>
       </View>
+
     </View>
   );
 }
@@ -36,6 +47,24 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingVertical: 80,
     paddingHorizontal: 24,
+  },
+  logoTopLeft: {
+    position: 'absolute',
+    top: 48,
+    left: -30,
+    width: 180,
+    height: 180,
+    opacity: 0.15,
+    transform: [{ rotate: '310deg' }],
+  },
+  logoBottomRight: {
+    position: 'absolute',
+    bottom: 40,
+    right: -30,
+    width: 180,
+    height: 180,
+    opacity: 0.15,
+    transform: [{ rotate: '120deg' }],
   },
   brandContainer: {
     flex: 1,
